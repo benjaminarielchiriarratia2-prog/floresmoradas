@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores Moradas 💜</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- BIENVENIDA -->
+    <section id="inicio">
+        <div class="presentacion">
+            <<div class="corazon">
+    <img src="ramo-morado.png" alt="Ramo de flores moradas para Lilu">
+</div>
+            <h1>Feliz Día de las Flores Moradas Mayra</h1>
+            <p>Preparé este pequeño detalle para ti, con flores, sorpresas y mucho cariño.</p>
+            <button id="entrar">Toca Aquí LILU 💜</button>
+        </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="contenido">
+
+        <h1>Feliz Día de las<br>Flores Moradas lilu💜</h1>
+
+        <p class="subtitulo">
+            Para ti, una personita especial. Que estas flores
+            te recuerden lo mucho que te quiero y que para mí
+            eres perfecta. 🌷💜
+        </p>
+
+        <!-- RAMO DE FLORES -->
+        <div class="ramo">
+            <div class="tallo t1"></div>
+            <div class="tallo t2"></div>
+            <div class="tallo t3"></div>
+            <div class="tallo t4"></div>
+            <div class="tallo t5"></div>
+            <div class="tallo t6"></div>
+            <div class="tallo t7"></div>
+
+            <div class="hoja h1"></div>
+            <div class="hoja h2"></div>
+            <div class="hoja h3"></div>
+            <div class="hoja h4"></div>
+
+            <div class="flor f1"><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i></div>
+            <div class="flor f2"><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i></div>
+            <div class="flor f3"><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i></div>
+            <div class="flor f4"><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i></div>
+            <div class="flor f5"><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i></div>
+            <div class="flor f6"><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i></div>
+            <div class="flor f7"><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i><i class="petalo"></i></div>
+
+            <div class="envoltura"></div>
+            <div class="lazo">🎀</div>
+        </div>
+ <!-- CUATRO TARJETAS CON FOTOS -->
+        <div class="tarjetas">
+
+            <div class="tarjeta"
+                 data-icono="💐"
+                 data-texto="Un ramo de flores moradas para recordarte que mereces cosas bonitas.">
+
+                <div class="imagen">
+                    <img src="imagen1.jpg" alt="Flores moradas">
+                </div>
+                <small>Para ti ♡</small>
+            </div>
+
+            <div class="tarjeta"
+                 data-icono="🌷"
+                 data-texto="Que nunca te falten motivos para sonreír y sueños por cumplir.">
+
+                <div class="imagen">
+                    <img src="imagen2.jpg" alt="Tulipanes">
+                </div>
+                <small>Con cariño</small>
+            </div>
+
+            <div class="tarjeta"
+                 data-icono="❤️"
+                 data-texto="Este pequeño detalle está hecho pensando en sacarte una sonrisa.">
+
+                <div class="imagen">
+                    <img src="imagen3.jpeg" alt="Un detalle especial">
+                </div>
+                <small>Un detalle</small>
+            </div>
+
+            <div class="tarjeta"
+                 data-icono="❤️"
+                 data-texto="eres tan hermosa y bella que me vuelve loco verte ❤️">
+
+                <div class="imagen">
+                    <img src="imagen4.jpeg" alt="Un recuerdo bonito">
+                </div>
+                <small>Para ti</small>
+            </div>
+
+        </div>
+
+       
+        <p>Toca cada tarjetita para descubrir una sorpresa. ✨</p>
+
+        <button id="abrirMensaje">Abrir mi mensaje 💌</button>
+
+        <!-- MENSAJE -->
+        <section id="mensaje">
+            <h1>Para ti lilu💜</h1>
+
+            <p>
+                Quizás no pueda estar a tu lado,
+                pero siempre pienso en ti. 🌷💜
+
+                Quiero regalarte estas flores moradas,
+                aunque virtuales, como un pequeño
+                recordatorio de lo especial que eres.
+
+                <br><br>
+
+                Que tu vida esté llena de momentos bonitos,
+                sueños cumplidos y personas que te quieran
+                de verdad.
+
+                <br><br>
+
+                Ojalá este detalle te saque una sonrisa
+                y nunca olvides cuánto te quiero. 🌷💜
+            </p>
+
+            <p class="firma">
+                <i>Con mucho cariño, para ti, Lilu.</i>
+            </p>
+
+            <button id="cerrarMensaje">Cerrar mensaje</button>
+        </section>
+
+    </main>
+
+    <!-- MÚSICA -->
+   <audio id="audioMusica" src="musica/Y BAILA LENTO FLOR MORADA QUE ME RECUERDAS A MI AMADA     bugambilia-nasa histoires.mp3" loop preload="auto"></audio>
+
+<button id="musica" title="Reproducir o pausar música" aria-label="Reproducir música">
+    ♫
+</button>
+
+    <!-- VENTANA DE SORPRESA -->
+    <div id="ventana">
+        <div class="caja">
+            <div class="imagen-grande" id="iconoGrande">💐</div>
+            <p id="textoVentana"></p>
+            <button id="cerrarVentana">Cerrar 💜</button>
+        </div>
+    </div>
+
+</body>
+</html>

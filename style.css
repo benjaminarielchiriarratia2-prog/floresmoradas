@@ -1,0 +1,629 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    color: #512767;
+    background: linear-gradient(145deg, #f7dfff, #d8b2f0, #f4d9ff);
+    overflow-x: hidden;
+}
+
+/* PANTALLA DE BIENVENIDA */
+
+#inicio {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    background:
+        radial-gradient(circle at 50% 35%, #fff1ff, transparent 55%),
+        linear-gradient(145deg, #d9b8f2, #f9e0ff);
+    transition: opacity 1s, visibility 1s;
+}
+
+#inicio.oculto {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.presentacion {
+    width: min(100%, 600px);
+    animation: aparecer 1.2s ease;
+}
+
+.presentacion .corazon {
+    font-size: 65px;
+    animation: latido 1.5s infinite;
+}
+
+h1 {
+    font-size: clamp(28px, 6vw, 42px);
+    margin: 18px 0;
+    color: #71348f;
+    text-shadow: 0 2px 10px #ffffff;
+}
+
+p {
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 24px;
+    margin: 15px 5px;
+    color: white;
+    background: linear-gradient(135deg, #b65cdb, #7936a1);
+    box-shadow: 0 5px 18px #78369c55;
+    font-size: 15px;
+    transition: transform .3s, box-shadow .3s;
+}
+
+button:hover {
+    transform: scale(1.06);
+    box-shadow: 0 8px 25px #78369c66;
+}
+
+button:active {
+    transform: scale(.96);
+}
+
+/* CONTENIDO PRINCIPAL: OCULTO HASTA ENTRAR */
+
+#contenido {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    padding: 35px 15px 80px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#contenido.visible {
+    display: flex;
+    animation: aparecer 1s ease;
+}
+
+.subtitulo {
+    max-width: 550px;
+    margin: 0 auto 10px;
+    color: #66357b;
+}
+
+/* RAMO DE FLORES */
+
+.ramo {
+    position: relative;
+    width: 340px;
+    max-width: 100%;
+    height: 335px;
+    margin: 20px auto 30px;
+    flex-shrink: 0;
+}
+
+.tallo {
+    position: absolute;
+    width: 5px;
+    height: 190px;
+    background: linear-gradient(90deg, #176c39, #65c968, #176c39);
+    bottom: 12px;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 10px;
+}
+
+.t1 { transform: translateX(-50%) rotate(-35deg); }
+.t2 { transform: translateX(-50%) rotate(-24deg); }
+.t3 { transform: translateX(-50%) rotate(-12deg); }
+.t4 { transform: translateX(-50%); }
+.t5 { transform: translateX(-50%) rotate(12deg); }
+.t6 { transform: translateX(-50%) rotate(24deg); }
+.t7 { transform: translateX(-50%) rotate(35deg); }
+
+.hoja {
+    position: absolute;
+    width: 55px;
+    height: 22px;
+    border-radius: 100% 0 100% 0;
+    background: linear-gradient(135deg, #7bd76b, #24823d);
+    z-index: 2;
+}
+
+.h1 {
+    bottom: 70px;
+    left: 65px;
+    transform: rotate(15deg);
+}
+
+.h2 {
+    bottom: 100px;
+    right: 65px;
+    transform: scaleX(-1) rotate(15deg);
+}
+
+.h3 {
+    bottom: 45px;
+    left: 110px;
+    transform: rotate(-10deg);
+}
+
+.h4 {
+    bottom: 130px;
+    right: 105px;
+    transform: scaleX(-1) rotate(15deg);
+}
+
+.flor {
+    position: absolute;
+    width: 75px;
+    height: 80px;
+    transform-origin: center bottom;
+    animation: balanceo 3s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 8px #b56bdf88);
+    z-index: 3;
+}
+
+.f1 { left: 132px; top: 0; }
+.f2 { left: 77px; top: 45px; animation-delay: -.8s; }
+.f3 { left: 185px; top: 42px; animation-delay: -1.2s; }
+.f4 { left: 40px; top: 105px; animation-delay: -.4s; }
+.f5 { left: 220px; top: 105px; animation-delay: -1.5s; }
+.f6 { left: 105px; top: 95px; animation-delay: -.6s; }
+.f7 { left: 160px; top: 105px; animation-delay: -1s; }
+
+.petalo {
+    position: absolute;
+    width: 24px;
+    height: 48px;
+    left: 25px;
+    top: 4px;
+    border: 1px solid #f4d7ff;
+    border-radius: 70% 70% 45% 45%;
+    background: linear-gradient(160deg, #fff0ff, #d39aef 55%, #9348bd);
+    transform-origin: bottom center;
+    box-shadow: inset -3px -4px 5px #78369c22;
+}
+
+.petalo:nth-child(1) {
+    left: 8px;
+    top: 23px;
+    transform: rotate(-48deg);
+}
+
+.petalo:nth-child(2) {
+    left: 17px;
+    top: 10px;
+    transform: rotate(-25deg);
+}
+
+.petalo:nth-child(3) {
+    left: 25px;
+    top: 4px;
+}
+
+.petalo:nth-child(4) {
+    left: 34px;
+    top: 10px;
+    transform: rotate(25deg);
+}
+
+.petalo:nth-child(5) {
+    left: 43px;
+    top: 23px;
+    transform: rotate(48deg);
+}
+
+.envoltura {
+    position: absolute;
+    width: 155px;
+    height: 100px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f8dfff, #b77ad3, #e9c4ff);
+    clip-path: polygon(0 0, 100% 0, 76% 100%, 24% 100%);
+    z-index: 4;
+    filter: drop-shadow(0 4px 4px #70328c33);
+}
+
+.lazo {
+    position: absolute;
+    left: 50%;
+    bottom: 52px;
+    transform: translateX(-50%);
+    font-size: 40px;
+    z-index: 5;
+}
+
+/* TARJETAS DE SORPRESAS */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    margin: 20px auto;
+    width: min(100%, 600px);
+}
+
+.tarjeta {
+    min-width: 0;
+    padding: 9px;
+    border: 1px solid #e7c5f5;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #fffaff, #f0dafa);
+    box-shadow: 0 5px 16px #67358233;
+    cursor: pointer;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.tarjeta:nth-child(odd) {
+    transform: rotate(-3deg);
+}
+
+.tarjeta:nth-child(even) {
+    transform: rotate(3deg);
+}
+
+.tarjeta:hover {
+    transform: translateY(-6px) rotate(0deg);
+    box-shadow: 0 10px 25px #67358244;
+}
+
+.imagen {
+    min-height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #f7e5ff, #d4adee);
+    font-size: 38px;
+}
+
+.tarjeta small {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #633779;
+}
+
+/* MENSAJE PERSONAL */
+
+#mensaje {
+    display: none;
+    width: min(100%, 550px);
+    padding: 25px;
+    margin: 25px 0;
+    border: 1px solid #e3baf5;
+    border-radius: 20px;
+    background: #fff9ffdd;
+    box-shadow: 0 5px 25px #7d429433;
+}
+
+#mensaje.visible {
+    display: block;
+    animation: aparecer .7s ease;
+}
+
+#mensaje h1 {
+    font-size: 34px;
+}
+
+.firma {
+    margin-top: 15px;
+    color: #8743a4;
+}
+
+/* VENTANA DE LAS TARJETAS */
+
+#ventana {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: #210d30dd;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#ventana.visible {
+    display: flex;
+}
+
+.caja {
+    width: min(380px, 100%);
+    padding: 20px;
+    border: 1px solid #e5c0f8;
+    border-radius: 22px;
+    text-align: center;
+    background: #f8eaff;
+    color: #512767;
+    box-shadow: 0 10px 45px #13051d66;
+    animation: aparecer .5s ease;
+}
+
+.imagen-grande {
+    min-height: 180px;
+    border-radius: 15px;
+    background: radial-gradient(circle, #fff, #d9b5f0, #a46bc5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 90px;
+}
+
+#textoVentana {
+    padding: 18px 5px 5px;
+}
+
+/* BOTÓN DE MÚSICA */
+
+#musica {
+    position: fixed;
+    z-index: 8;
+    right: 15px;
+    bottom: 15px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    background: #fff4ff;
+    color: #78369c;
+    box-shadow: 0 4px 15px #5c287744;
+}
+
+/* CORAZONES Y ELEMENTOS FLOTANTES */
+
+.flotante {
+    position: fixed;
+    z-index: 1;
+    bottom: -50px;
+    pointer-events: none;
+    animation: subir linear forwards;
+}
+
+@keyframes subir {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+    15% {
+        opacity: .8;
+    }
+    100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@keyframes balanceo {
+    from { rotate: -4deg; }
+    to { rotate: 4deg; }
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        translate: 0 20px;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+/* DISEÑO PARA CELULARES */
+
+@media (max-width: 520px) {
+    #contenido {
+        padding: 25px 12px 75px;
+    }
+
+    .tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 330px;
+        gap: 14px;
+    }
+
+    .tarjeta {
+        padding: 9px;
+    }
+
+    .ramo {
+        transform: scale(.9);
+        transform-origin: top center;
+        margin-bottom: 0;
+    }
+
+    #mensaje {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    h1 {
+        font-size: 27px;
+    }
+
+    .ramo {
+        transform: scale(.8);
+        margin-bottom: -35px;
+    }
+}
+
+/* FOTOGRAFÍAS DE LAS CUATRO TARJETAS */
+
+.tarjeta .imagen {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 15px;
+}
+
+.tarjeta .imagen img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.4s ease;
+}
+
+.tarjeta:hover .imagen img {
+    transform: scale(1.08);
+}
+
+/* RAMO MORADO SOLO EN LA BIENVENIDA */
+
+#inicio .corazon {
+    width: min(75vw, 300px);
+    height: auto;
+    margin: 0 auto 20px;
+    background: transparent;
+    box-shadow: none;
+    animation: aparecerRamo 1.5s ease both;
+}
+
+#inicio .corazon img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 18px rgba(190, 100, 255, 0.65));
+}
+
+@keyframes aparecerRamo {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* FLORES MORADAS CON MOVIMIENTO NATURAL */
+
+.flor {
+    transform-origin: bottom center;
+    animation: florConBrisa 4s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 5px rgba(205, 145, 255, 0.5));
+}
+
+/* Cada flor se mueve en un momento diferente */
+.flor.f1 { animation-delay: 0s; }
+.flor.f2 { animation-delay: -1.2s; }
+.flor.f3 { animation-delay: -2s; }
+.flor.f4 { animation-delay: -0.7s; }
+.flor.f5 { animation-delay: -1.8s; }
+.flor.f6 { animation-delay: -2.5s; }
+.flor.f7 { animation-delay: -1s; }
+
+@keyframes florConBrisa {
+    0% {
+        transform: rotate(-2deg) translateY(0);
+    }
+    50% {
+        transform: rotate(1.5deg) translateY(-3px);
+    }
+    100% {
+        transform: rotate(3deg) translateY(1px);
+    }
+}
+
+/* Pétalos con brillo suave */
+.flor .petalo {
+    filter: brightness(1.08) saturate(1.12);
+    transition: filter 0.5s ease;
+}
+
+.flor:hover .petalo {
+    filter: brightness(1.3) saturate(1.25);
+}
+
+/* Hojas movidas suavemente por la brisa */
+.hoja {
+    transform-origin: bottom center;
+    animation: hojasConBrisa 5s ease-in-out infinite alternate;
+}
+
+.hoja.h2 { animation-delay: -1.5s; }
+.hoja.h3 { animation-delay: -2.5s; }
+.hoja.h4 { animation-delay: -0.8s; }
+
+@keyframes hojasConBrisa {
+    from {
+        rotate: -3deg;
+    }
+    to {
+        rotate: 4deg;
+    }
+}
+
+/* Movimiento suave de los tallos */
+.tallo {
+    transform-origin: bottom center;
+    animation: tallosConBrisa 4.5s ease-in-out infinite alternate;
+}
+
+.tallo.t2 { animation-delay: -1s; }
+.tallo.t3 { animation-delay: -2s; }
+.tallo.t4 { animation-delay: -0.5s; }
+.tallo.t5 { animation-delay: -1.7s; }
+.tallo.t6 { animation-delay: -2.5s; }
+.tallo.t7 { animation-delay: -1.3s; }
+
+@keyframes tallosConBrisa {
+    from {
+        rotate: -1deg;
+    }
+    to {
+        rotate: 1.5deg;
+    }
+}
+
+/* Respeta la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .flor,
+    .hoja,
+    .tallo {
+        animation: none;
+    }
+}
+
+.flor .petalo {
+    background-image: linear-gradient(
+        135deg,
+        #f4d9ff 0%,
+        #d49aff 35%,
+        #a64de0 70%,
+        #7130ad 100%
+    );
+    box-shadow:
+        inset 2px 2px 5px rgba(255, 255, 255, 0.45),
+        0 0 8px rgba(191, 112, 255, 0.35);
+}
